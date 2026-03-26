@@ -4,13 +4,13 @@ import Navbar from "./Navbar";
 
 function MainLayout() {
   return (
-    <div className="flex">
+    <div>
       <Sidebar />
-      <div className="flex-1">
-        <Navbar />
-        <div>
-          <Outlet />
-        </div>
+      <Navbar />
+
+      {/* Page Content */}
+      <div className="ml-72 pt-20 p-6 bg-[#0A0E14] min-h-screen">
+        <Outlet />
       </div>
     </div>
   );

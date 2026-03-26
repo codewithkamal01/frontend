@@ -8,7 +8,7 @@ function Navbar() {
     "/dashboard": "Search infrastructure, alerts...",
     "/misconfigurations": "Search resources, issues or cloud accounts...",
     "/scan-cloud": "Search scans...",
-    "/reports": "Search reports, assests or vulnerabilities...",
+    "/reports": "Search reports, assets or vulnerabilities...",
     "/logs": "Search logs...",
     "/settings": "Search settings...",
   };
@@ -16,20 +16,26 @@ function Navbar() {
   const placeholder = placeholders[location.pathname] || "Search...";
 
   return (
-    <div className="bg-[#0f141a] w-full h-14 flex items-center justify-between px-6 ">
+    <div className="fixed top-0 left-72 right-0 h-14 
+      bg-[#0f141a]/60 backdrop-blur-xl 
+      border-b border-[#20262F]
+      flex items-center justify-between px-6 z-40">
+
+      {/* Search */}
       <div className="relative">
         <Search
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-          size={15}
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A8ABB3]"
+          size={16}
         />
         <input
           type="text"
           placeholder={placeholder}
-          className="bg-[#000000] text-gray-300 pl-9 py-1 text-sm rounded-lg w-96 outline-none"
+          className="bg-[#20262F]/70 text-[#F1F3FC] pl-9 py-1.5 text-sm rounded-lg w-96 outline-none focus:ring-1 focus:ring-[#9BA8FF]"
         />
       </div>
 
-      <Bell className="text-gray-300 cursor-pointer" />
+      {/* Notification */}
+      <Bell className="text-[#A8ABB3] cursor-pointer hover:text-[#F1F3FC]" />
     </div>
   );
 }

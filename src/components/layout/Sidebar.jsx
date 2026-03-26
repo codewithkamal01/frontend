@@ -1,68 +1,74 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 
 function Sidebar() {
   const menuItems = [
     { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
-    { name: "Misconfigurations", icon: "gpp_maybe", path: "/misconfigurations",},
+    {
+      name: "Misconfigurations",
+      icon: "gpp_maybe",
+      path: "/misconfigurations",
+    },
     { name: "Scan Cloud", icon: "cloud_sync", path: "/scan-cloud" },
     { name: "Reports", icon: "analytics", path: "/reports" },
     { name: "Logs", icon: "terminal", path: "/logs" },
   ];
 
   const base =
-    "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 font-['Space_Grotesk'] font-medium tracking-tight";
+    "flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-['Space_Grotesk'] font-medium tracking-tight";
+
+  const active =
+    "bg-gradient-to-r from-[#9BA8FF]/10 to-[#A58CFF]/10 text-[#9BA8FF] border-r-2 border-[#9BA8FF]";
+
+  const inactive = "text-[#A8ABB3] hover:text-[#F1F3FC] hover:bg-[#20262F]";
 
   return (
-    <div
-      className="w-72 h-screen bg-[#0f141a] p-4"
-    >
-      <div className="px-4 mb-10">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg flex signal-gradient items-center justify-center">
-            <span className="material-symbols-outlined material-filled text-[#001c8e] text-xl">
-              shield
-            </span>
-          </div>
-          <div>
-            <h1 className="text-xl font-bold bg-gradient-to-br from-blue-400 to-purple-500 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-tight">
-              AutoCloud Guard
-            </h1>
-            <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
-              Active Defense
-            </p>
+    <div className="w-72 h-screen bg-[#0f141a] p-4 border-r border-[#20262F] fixed left-0 top-0 flex flex-col justify-between">
+      {/* Top */}
+      <div>
+        {/* Logo */}
+        <div className="px-4 mb-10">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#9BA8FF] to-[#A58CFF]">
+              <span className="material-symbols-outlined text-[#092e61] text-xl">
+                shield
+              </span>
+            </div>
+            <div>
+              <h1 className="text-xl font-bold bg-gradient-to-br from-[#9BA8FF] to-[#A58CFF] bg-clip-text text-transparent font-['Space_Grotesk']">
+                AutoCloud Guard
+              </h1>
+              <p className="text-[10px] uppercase tracking-widest text-[#6B7280] font-bold">
+                Active Defense
+              </p>
+            </div>
           </div>
         </div>
+
+        {/* Menu */}
+        <nav className="flex flex-col gap-2">
+          {menuItems.map((item) => (
+            <NavLink
+              to={item.path}
+              key={item.name}
+              className={({ isActive }) =>
+                `${base} ${isActive ? active : inactive}`
+              }
+            >
+              <span className="material-symbols-outlined">{item.icon}</span>
+              {item.name}
+            </NavLink>
+          ))}
+        </nav>
       </div>
 
-      <nav className="flex flex-col gap-2 ">
-        {menuItems.map((item) => (
-          <NavLink
-            to={item.path}
-            key={item.name}
-            className={({ isActive }) =>
-              `${base} ${
-                isActive
-                  ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border-r-2 border-blue-500"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
-              }`
-            }
-          >
-            <span className="material-symbols-outlined">{item.icon}</span>
-            {item.name}
-          </NavLink>
-        ))}
-      </nav>
-      <div className="mt-50">
-        <NavLink
-          to="/settings"
-          className={({ isActive }) =>
-            `${base} ${isActive ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border-r-2 border-blue-500" : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"}`
-          }
-        >
-          <span className="material-symbols-outlined">settings</span>
-          Settings
-        </NavLink>
-      </div>
+      {/* Bottom Settings */}
+      <NavLink
+        to="/settings"
+        className={({ isActive }) => `${base} ${isActive ? active : inactive}`}
+      >
+        <span className="material-symbols-outlined">settings</span>
+        Settings
+      </NavLink>
     </div>
   );
 }
