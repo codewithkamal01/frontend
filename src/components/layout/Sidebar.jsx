@@ -16,18 +16,18 @@ function Sidebar() {
     <div
       className="w-72 h-screen bg-[#0f141a] p-4"
     >
-      <div class="px-4 mb-10">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg flex signal-gradient items-center justify-center">
+      <div className="px-4 mb-10">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg flex signal-gradient items-center justify-center">
             <span className="material-symbols-outlined material-filled text-[#001c8e] text-xl">
               shield
             </span>
           </div>
           <div>
-            <h1 class="text-xl font-bold bg-gradient-to-br from-blue-400 to-purple-500 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-tight">
+            <h1 className="text-xl font-bold bg-gradient-to-br from-blue-400 to-purple-500 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-tight">
               AutoCloud Guard
             </h1>
-            <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+            <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
               Active Defense
             </p>
           </div>
