@@ -1,0 +1,43 @@
+export const settingsData = [
+  {
+    id: "autoRemediation",
+    title: "Automatic Remediation",
+    desc: "Automatically fix high-risk security misconfigurations as they are detected.",
+    icon: "bolt",
+    color: "rgb(155,168,255)",
+    enabled: true,
+  },
+  {
+    id: "emailNotifications",
+    title: "Email Notifications",
+    desc: "Receive daily security digests and critical incident alerts via your registered email.",
+    icon: "mail",
+    color: "rgb(165,140,255)",
+    enabled: true,
+  },
+  {
+    id: "slackIntegration",
+    title: "Slack Integration",
+    desc: "Push real-time security alerts directly to your team's designated Slack channels.",
+    icon: "forum",
+    color: "rgb(129,236,255)",
+    enabled: false,
+  },
+  {
+    id: "weeklyReports",
+    title: "Weekly Reports",
+    desc: "Generate and deliver detailed compliance and health reports every Monday morning.",
+    icon: "analytics",
+    color: "rgb(155,168,255)",
+    enabled: true,
+  },
+  {
+    id: "realtimeScanning",
+    title: "Real-time Scanning",
+    desc: "Continuous monitoring of environment changes. High resource usage, provides immediate threat detection.",
+    icon: "search_check",
+    color: "rgb(129,236,255)",
+    enabled: true,
+    fullWidth: true,
+  },
+];

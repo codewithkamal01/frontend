@@ -1,7 +1,7 @@
 import { Bell, Search } from "lucide-react";
 import { useLocation } from "react-router";
 
-function Navbar() {
+function Navbar({search, setSearch}) {
   const location = useLocation();
 
   const placeholders = {
@@ -31,6 +31,8 @@ function Navbar() {
           type="text"
           placeholder={placeholder}
           className="bg-[#20262F]/70 text-[#F1F3FC] pl-9 py-1.5 text-sm rounded-lg w-96 outline-none focus:ring-1 focus:ring-[#9BA8FF]"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 

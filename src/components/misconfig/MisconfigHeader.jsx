@@ -1,6 +1,23 @@
 import SeverityFilter from "./SeverityFilter";
 
-function MisconfigHeader() {
+function MisconfigHeader({
+  provider,
+  setProvider,
+  severity,
+  setSeverity,
+  onRescan,
+}) {
+  const providers = [{ name: "AWS" }, { name: "Azure" }, { name: "GCP" }];
+  const providerBtn =
+    "flex flex-col items-center gap-2 p-4 rounded-xl cursor-pointer transition-all cursor-pointer";
+
+  const getProviderStyle = (name) =>
+    `${providerBtn} ${
+      provider === name
+        ? "px-4 py-2 rounded-lg text-xs font-bold font-['Inter'] bg-[rgb(32,38,47)] text-[rgb(155,168,255)]"
+        : "px-4 py-2 rounded-lg text-xs font-bold font-['Inter'] text-[rgb(168,171,179)] hover:text-[rgb(241,243,252)]"
+    }`;
+
   return (
     <div className="px-5 max-w-[1600px] mx-auto">
       {/* Page Header & Filters */}
@@ -17,20 +34,21 @@ function MisconfigHeader() {
         <div className="flex flex-wrap items-center gap-4">
           {/* Provider Filter */}
           <div className="bg-[rgb(21,26,33)] rounded-xl p-1 flex">
-            <button className="px-4 py-2 rounded-lg text-xs font-bold font-['Inter'] bg-[rgb(32,38,47)] text-[rgb(155,168,255)] transition-all">
-              AWS
-            </button>
-            <button className="px-4 py-2 rounded-lg text-xs font-bold font-['Inter'] text-[rgb(168,171,179)] hover:text-[rgb(241,243,252)] transition-all">
-              Azure
-            </button>
-            <button className="px-4 py-2 rounded-lg text-xs font-bold font-['Inter'] text-[rgb(168,171,179)] hover:text-[rgb(241,243,252)] transition-all">
-              GCP
-            </button>
+            {providers.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => setProvider(item.name)}
+                className={getProviderStyle(item.name)}
+              >
+                {item.name}
+              </button>
+            ))}
           </div>
           {/* Severity Filter */}
-          <SeverityFilter/>
+          <SeverityFilter severity={severity} setSeverity={setSeverity} />
           <button
-            className="px-6 py-2 rounded-xl text-sm font-bold font-['Space_Grotesk'] text-black shadow-lg hover:opacity-90 transition-all active:scale-95 flex items-center gap-2"
+            onClick={onRescan}
+            className="px-6 py-2 rounded-xl cursor-pointer text-sm font-bold text-black flex items-center gap-2"
             style={{
               background:
                 "linear-gradient(135deg, rgb(155,168,255), rgb(165,140,255))",

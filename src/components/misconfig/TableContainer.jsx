@@ -1,7 +1,6 @@
-import Pagination from "./Pagination";
 import TableRow from "./TableRow";
 
-function TableContainer() {
+function TableContainer({ tableData, loading,onAutoFix }) {
   const headers = [
     "Resource Name",
     "Issue Type",
@@ -13,6 +12,18 @@ function TableContainer() {
 
   const thClass =
     "px-6 py-6 text-xs font-bold text-[rgb(168,171,179)] uppercase tracking-wider";
+
+  if (loading) {
+    return (
+      <div className="text-center py-10 text-gray-400">Scanning Infrastructure...</div>
+    );
+  }
+
+  if (!tableData || tableData.length === 0) {
+    return (
+      <div className="text-center py-10 text-gray-400">No issues found</div>
+    );
+  }
 
   return (
     <div className="rounded-4xl overflow-hidden shadow-2xl bg-[rgb(21,26,33)]">
@@ -37,11 +48,12 @@ function TableContainer() {
 
           {/* Table Body */}
           <tbody className="divide-y divide-[rgba(68,72,79,0.1)]">
-            <TableRow />
+            {tableData.map((row) => (
+              <TableRow key={row.id} row={row} onAutoFix={onAutoFix}/>
+            ))}
           </tbody>
         </table>
       </div>
-       <Pagination/>
     </div>
   );
 }
