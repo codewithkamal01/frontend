@@ -30,7 +30,7 @@ function Logs() {
 
   return (
     <div className="bg-[#0A0E14] min-h-screen">
-      <div className="max-w-screen-2xl mx-auto space-y-10 p-8">
+      <div className="max-w-screen-2xl mx-auto space-y-10 p-4 sm:p-6 lg:p-8">
         {/* Header */}
         <LogsHeader />
 
@@ -39,7 +39,7 @@ function Logs() {
 
         {/* View Toggle & Content */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h2 className="text-2xl font-bold text-white">Activity Log</h2>
 
             <div className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/30 p-1">

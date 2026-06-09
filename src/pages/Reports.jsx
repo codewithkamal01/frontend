@@ -7,7 +7,7 @@ import SeverityChart from "../components/reports/SeverityChart";
 function Reports() {
   return (
     <div className="bg-[#0A0E14] min-h-screen">
-      <div className="max-w-screen-2xl mx-auto space-y-10 p-8">
+      <div className="max-w-screen-2xl mx-auto space-y-10 p-4 sm:p-6 lg:p-8">
         {/* Header */}
         <ReportsHeader />
 
@@ -15,7 +15,7 @@ function Reports() {
         <ReportMetrics />
 
         {/* Charts */}
-        <div className="grid gap-6 lg:grid-cols-12">
+        <div className="grid gap-6 grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <SeverityChart />
           </div>

@@ -7,10 +7,10 @@ import StatsGrid from "../components/dashboard/StatsGrid";
 export default function Dashboard() {
   return (
     <div className="bg-[#0A0E14] min-h-screen">
-      <div className="max-w-screen-2xl mx-auto space-y-10 p-8">
+      <div className="max-w-screen-2xl mx-auto space-y-10 p-4 sm:p-6 lg:p-8">
         <DashboardHeader />
 
-        <div className="grid gap-6 lg:grid-cols-12">
+        <div className="grid gap-6 grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SecurityScoreCard />
           </div>
