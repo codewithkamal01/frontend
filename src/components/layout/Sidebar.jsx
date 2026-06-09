@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-function Sidebar() {
+function Sidebar({ isOpen, setIsOpen }) {
   const menuItems = [
     { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
     {
@@ -22,25 +22,39 @@ function Sidebar() {
   const inactive = "text-[#A8ABB3] hover:text-[#F1F3FC] hover:bg-[#20262F]";
 
   return (
-    <div className="w-72 h-screen bg-[#0f141a] p-4 border-r border-[#20262F] fixed left-0 top-0 flex flex-col justify-between">
+    <div
+      className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#0f141a] p-4 border-r border-[#20262F] flex flex-col justify-between transform transition-transform duration-300 lg:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
       {/* Top */}
       <div>
         {/* Logo */}
         <div className="px-4 mb-10">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#9BA8FF] to-[#A58CFF]">
-              <span className="material-symbols-outlined text-[#092e61] text-xl">
-                shield
-              </span>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#9BA8FF] to-[#A58CFF]">
+                <span className="material-symbols-outlined text-[#092e61] text-xl">
+                  shield
+                </span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-gradient-to-br from-[#9BA8FF] to-[#A58CFF] bg-clip-text text-transparent font-['Space_Grotesk']">
+                  AutoCloud Guard
+                </h1>
+                <p className="text-[10px] uppercase tracking-widest text-[#6B7280] font-bold">
+                  Active Defense
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl font-bold bg-gradient-to-br from-[#9BA8FF] to-[#A58CFF] bg-clip-text text-transparent font-['Space_Grotesk']">
-                AutoCloud Guard
-              </h1>
-              <p className="text-[10px] uppercase tracking-widest text-[#6B7280] font-bold">
-                Active Defense
-              </p>
-            </div>
+            <button
+              type="button"
+              className="lg:hidden text-[#A8ABB3] hover:text-[#F1F3FC]"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
           </div>
         </div>
 
@@ -50,6 +64,7 @@ function Sidebar() {
             <NavLink
               to={item.path}
               key={item.name}
+              onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
                 `${base} ${isActive ? active : inactive}`
               }
@@ -64,6 +79,7 @@ function Sidebar() {
       {/* Bottom Settings */}
       <NavLink
         to="/settings"
+        onClick={() => setIsOpen(false)}
         className={({ isActive }) => `${base} ${isActive ? active : inactive}`}
       >
         <span className="material-symbols-outlined">settings</span>
