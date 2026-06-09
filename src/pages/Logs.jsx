@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import LogsHeader from "../components/logs/LogsHeader";
-import LogsStats from "../components/logs/LogsStats";
-import LogsTable from "../components/logs/LogsTable";
-import ActivityTimeline from "../components/logs/ActivityTimeline";
+import LogsHeader from "../components/logss/LogsHeader";
+import LogsStats from "../components/logss/LogsStats";
+import LogsTable from "../components/logss/LogsTable";
+import ActivityTimeline from "../components/logss/ActivityTimeline";
 import { activityLogs } from "../Data/logsData";
 import { useOutletContext } from "react-router-dom";
 
@@ -23,7 +23,7 @@ function Logs() {
         log.action.toLowerCase().includes(s) ||
         log.description.toLowerCase().includes(s) ||
         log.user.toLowerCase().includes(s) ||
-        log.type.toLowerCase().includes(s)
+        log.type.toLowerCase().includes(s),
     );
     setFilteredLogs(filtered);
   }, [search]);
